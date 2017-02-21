@@ -1,0 +1,28 @@
+{
+  "name": "toeatlist",
+  "version": "0.0.1",
+  "description": "Small list where you can collect your food.",
+  "main": "./js/main.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha reporter=nyan"
+  },
+  "keywords": [
+    "todo",
+    "puchdb",
+    "sample"
+  ],
+  "author": "Kornelia Kobiela",
+  "license": "MIT",
+  "dependencies": {
+    "pouchdb": "^6.1.2"
+  },
+  "devDependencies": {
+    "browserify": "^14.1.0",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.7"
+  }
+}

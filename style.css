@@ -1,0 +1,21 @@
+body {
+    font-family:"Open-Sans", sans-serif;
+}
+.todo-form, .main-header, .task-list{
+    display: flex;;
+    flex-direction: column;
+    width: 50vw;
+    margin: auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.todo-form input {
+    padding: 10px;
+    margin: 10px 0;
+}
+.task-list li{
+    padding: 15px;
+    border-bottom: solid 1px grey;
+    list-style-type: none;
+
+}
