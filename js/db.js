@@ -7,50 +7,40 @@ module.exports = (() => {
     const toEatBase = new PouchDB(CONFIG.localName);
     return {
         addItem: (item) => {
-            toEatBase.put(item, (err, res) => {
-                if (err) {
-                    console.error("Cannot add item to database.");
-                } else {
-                    console.log("Item added");
-                    console.log(res);
-                }
+            toEatBase.put(item).then((res) => {
+                console.log("Item added");
+                console.log(res);
+            }).catch((err) => {
+                console.error("Cannot add item" + err);
             })
         },
         removeItem: (item) => {
-            toEatBase.remove(item, (err, res) => {
-                if (err) {
-                    console.error("Cannot remove item to database. " + err);
-                } else {
-                    console.log("Item removed");
-                    console.log(res);
-                }
+            toEatBase.remove(item).then((res) => {
+                console.log("Item removed");
+                console.log(res);
+            }).catch((err) => {
+                console.error("Cannot remove this item " + err);
             });
         },
         editItem: (item) => {
-            toEatBase.get(item._id, (err, res) => {
-                if (err) {
-                    console.error("Cannot get item or item not exist. " + err);
-                } else {
-                    toEatBase.put(item, (err, res) => {
-                        if (err) {
-                            console.error("Cannot update item. " + err);
-                        } else {
-                            console.log("Item updated " + res);
-                        }
-                    })
-                }
+            toEatBase.get(item._id).then((res) => {
+                toEatBase.put(item).then((es) => {
+                    console.log("Item updated " + res);
+                }).catch((err)=>{
+                    console.log("Cannot edit item " + err);
+                })
+            }).catch((err)=>{
+                console.error("Cannot getting item" + err);
             })
         },
         listItems: (callback) => {
             toEatBase.allDocs({
                 include_docs: true,
                 descending: true
-            }, (err, res) => {
-                if(err){
-                    console.error("Cannot get all items from DB. " + err);
-                } else {
-                    callback(res);
-                }
+            }).then((res) => {
+                callback(res);
+            }).catch((err) => {
+                console.error("Cannot list items from DB " + err);
             })
         }
     }
