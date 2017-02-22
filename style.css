@@ -1,7 +1,7 @@
 body {
     font-family:"Open-Sans", sans-serif;
 }
-.todo-form, .main-header, .task-list{
+.toeat-form, .main-header, .task-list{
     display: flex;;
     flex-direction: column;
     width: 50vw;
@@ -9,7 +9,7 @@ body {
     padding: 10px;
     box-sizing: border-box;
 }
-.todo-form input {
+.toeat-form input {
     padding: 10px;
     margin: 10px 0;
 }
@@ -17,5 +17,10 @@ body {
     padding: 15px;
     border-bottom: solid 1px grey;
     list-style-type: none;
+}
 
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

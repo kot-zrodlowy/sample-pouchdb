@@ -1,13 +1,14 @@
 {
   "name": "toeatlist",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Small list where you can collect your food.",
   "main": "./js/main.js",
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "test": "mocha reporter=nyan"
+    "build": "browserify ./js/main.js -o ./js/bundle.js",
+    "test": "mocha --reporter=nyan"
   },
   "keywords": [
     "todo",
@@ -20,9 +21,14 @@
     "pouchdb": "^6.1.2"
   },
   "devDependencies": {
-    "browserify": "^14.1.0",
-    "chai": "^3.5.0",
-    "mocha": "^3.2.0",
-    "sinon": "^1.17.7"
-  }
+    "browserify": "^14.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/korneliakobiela/sample-pouchdb.git"
+  },
+  "bugs": {
+    "url": "https://github.com/korneliakobiela/sample-pouchdb/issues"
+  },
+  "homepage": "https://github.com/korneliakobiela/sample-pouchdb#readme"
 }
