@@ -18,7 +18,6 @@ body {
     border-bottom: solid 1px grey;
     list-style-type: none;
 }
-
 .task-item {
     display: flex;
     justify-content: space-between;

@@ -1,7 +1,16 @@
+/**
+ * A module for form operations
+ * @module form
+ * @type {{setForm, handleSubmitButton}}
+ */
 module.exports = (function () {
-    //noinspection JSUnresolvedFunction
-    let formInstance;
 
+    let formInstance;
+    /**
+     * Function to get Data as JS object
+     * @private
+     * @returns {object} - return values of form
+     */
     const getFormDataAsJSON = () => {
         const data = {},
             formData = new FormData(formInstance);
@@ -11,14 +20,26 @@ module.exports = (function () {
         return data;
     };
     return {
+        /**
+         * Set reference to form in HTML
+         * @param query - query to describe form
+         */
         setForm: (query) => {
             formInstance = document.querySelector(query);
+        },
+        /**
+         * Check if form has empty fields
+         * @param item - object from fields
+         * @returns {boolean} - true if at least one of fields are
+         */
+        hasEmptyFields: (item) => {
+           return item.date=="" || item.name == "";
         },
         handleSubmitButton: (event) => {
             event.preventDefault();
             return getFormDataAsJSON();
-        }
 
+        }
 
     }
 

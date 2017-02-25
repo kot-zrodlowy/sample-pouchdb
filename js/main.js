@@ -9,14 +9,18 @@ form.setForm('#toeat-form');
 formSubmitButton.addEventListener("click", (e) => {
     const item = form.handleSubmitButton(e);
     console.log(item);
-    db.addItem(item);
-    const li = out.showToEatItem(item, (e) => {
-        db.removeItem(item);
-        out.removeLiEl(li);
-    });
-    out.stylingToEatItem(li);
-    list.appendChild(li);
-    e.target.parentNode.reset();
+    if(form.hasEmptyFields(item)){
+        alert("Wypełnij wszystkie pola");
+    } else {
+        db.addItem(item);
+        const li = out.showToEatItem(item, (e) => {
+            db.removeItem(item);
+            out.removeLiEl(li);
+        });
+        out.stylingToEatItem(li);
+        list.appendChild(li);
+        e.target.parentNode.reset();
+    }
 
 }, true);
 
@@ -29,7 +33,6 @@ db.listItems((res) => {
         });
         list.appendChild(li);
         out.stylingToEatItem(li);
-        // out.handleRemoveButtonClick()
     }
 
 

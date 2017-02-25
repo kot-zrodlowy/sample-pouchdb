@@ -8,7 +8,8 @@
   },
   "scripts": {
     "build": "browserify ./js/main.js -o ./js/bundle.js",
-    "test": "mocha --reporter=nyan"
+    "test": "mocha --reporter=nyan",
+    "karma": "karma start"
   },
   "keywords": [
     "todo",
@@ -21,7 +22,16 @@
     "pouchdb": "^6.1.2"
   },
   "devDependencies": {
-    "browserify": "^14.1.0"
+    "browserify": "^14.1.0",
+    "chai": "^3.5.0",
+    "karma": "^1.5.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-mocha": "^1.3.0",
+    "karma-sinon-chai": "^1.2.4",
+    "lolex": "^1.5.2",
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.7",
+    "sinon-chai": "^2.8.0"
   },
   "repository": {
     "type": "git",

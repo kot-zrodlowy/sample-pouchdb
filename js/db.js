@@ -1,16 +1,28 @@
+//noinspection JSUnresolvedVariable
+/**
+ * A module for manage database query
+ * @module db
+ * @type {{addItem, removeItem, editItem, listItems}}
+ */
 module.exports = (() => {
 
     //noinspection JSUnresolvedFunction
     const PouchDB = require("pouchdb"),
+        /**
+         * Configuration object for database.
+         * @type {{localName: string}} - name of local db
+         */
         CONFIG = {localName: "toeats"},
         toEatBase = new PouchDB(CONFIG.localName);
 
+    /**
+     * Function to generate readable id with only small letters
+     * @param title - name value from form
+     * @return {string} - id without digits, whitespace, special characters
+     */
     function generateId(title) {
         title = title.toLowerCase();
-        for (let i = 0; i < title.length; i++) {
-            title = title.replace(/[\s\W\d]/, "");
-        }
-        return title;
+        return title.replace(/[\s\W\d]/g, "");
     }
 
     return {
@@ -38,7 +50,6 @@ module.exports = (() => {
             toEatBase.get(item.id).then((res) => {
                 toEatBase.remove(res).then((res) => {
                     console.log("Item removed "+ JSON.stringify(res));
-                    //window.location.reload(true);
                 }).catch((err) => {
                     console.error("Cannot remove this item " + err);
                 });
@@ -53,10 +64,8 @@ module.exports = (() => {
          */
         editItem: (item) => {
             toEatBase.get(item._id).then((res) => {
-                //noinspection JSUnresolvedFunction
                 toEatBase.put(item).then((es) => {
                     console.log("Item updated " + res + es);
-                    //window.location.reload(true);
                 }).catch((err) => {
                     console.log("Cannot edit item " + err);
                 })
@@ -69,8 +78,6 @@ module.exports = (() => {
          * @param callback {Function} - action which you want to do with data. It should have res object as a param.
          */
         listItems: (callback) => {
-
-            //noinspection JSUnresolvedFunction
             toEatBase.allDocs({
                 include_docs: true,
                 descending: true
